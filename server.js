@@ -230,20 +230,6 @@ MongoClient.connect(MONGODB_URL, {useNewUrlParser: true}, (err, client) => {
             
               let data= reformattedArtCollection
               for (let item of data){
-//             let item =    { type: 'Feature',
-//     properties: 
-//      { id: '2017.2.b',
-//        title: 'Garden Guardians',
-//        artist: 'Wowhaus',
-//        date: '2016',
-//        medium: 'Bronze',
-//        size: '28 x 18 x 12 in.',
-//        location: 'Noe Valley Town Square, undefined',
-//        address: '3861 24th St.',
-//        edited: true },
-//     geometry: { type: 'Point', coordinates: [Array] } } 
-
-              //console.log("item:", item);//
                      axios.put('http://localhost:8080/api/mongodb/ArtCollectionServer/', 
                 {item}//
                   )

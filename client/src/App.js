@@ -5,15 +5,6 @@ import { Link, Switch, Route } from 'react-router-dom'
 import MarkerClusterer from "@google/markerclusterer"
 
 import './App.css';
-
-
-import LandingPage from './components/pages/LandingPage/LandingPage.js';
-import Blog from './components/pages/Blog/Blog.js';
-import WriteArticle from './components/pages/WriteArticle/WriteArticle.js';
-import MapContainer from './components/MapContainer/MapContainer.js';
-import GoogleMap from './components/GoogleMap/GoogleMap.js';
-import MapWrapper from './components/MapWrapper/MapWrapper';
-
 const google = window.google;
 //shouldcomponentupdate, return false
 // janky map component with component did mount in it
@@ -190,16 +181,12 @@ class App extends Component {
     if (this.state.map !== null){
       let newMarkerArray =[]
       for (let item of this.state.data) {
-        //console.log("item is:", item);
         let coords = item.geometry.coordinates
         let latLng = new google.maps.LatLng(coords[0],coords[1]);
-        //console.log("map for marker is:", this.state.map)
-        //console.log("latlng for marker is:", latLng)
         let marker = new google.maps.Marker({
           map: this.state.mapmap,
           position: latLng,
         });
-        //console.log("new marker:", marker)
         let infowindow = new google.maps.InfoWindow({
           content: item.properties.title + ",\n  " + item.properties.artist
         });
