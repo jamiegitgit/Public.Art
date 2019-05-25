@@ -1,0 +1,25 @@
+{
+  "name": "mernstarter",
+  "version": "1.0.0",
+  "description": "",
+  "engines": {
+    "node": "8.10.0",
+    "npm": "3.5.2"
+  },
+  "author": "",
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "bash ./client/build.sh",
+    "start": "node server.js"
+  },
+  "cacheDirectories": [
+    "client/node_modules",
+    "node_modules"
+  ],
+  "dependencies": {
+    "axios": "^0.18.0",
+    "express": "4.16.3",
+    "mongodb": "3.1.1",
+    "nodemon": "1.18.7"
+  }
+}
