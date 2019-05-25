@@ -1,5 +1,3 @@
-/* global google */
-
 import React, { Component } from 'react';
 import { Link, Switch, Route } from 'react-router-dom'
 import MarkerClusterer from "@google/markerclusterer"
@@ -224,10 +222,8 @@ class App extends Component {
   createMarkerCluster(markers){
     console.log("this.state.markers:", this.state.markers)
     console.log("get map", this.state.map)
-    let zoom = parseInt(this.state.map.zoom.value, 10);
     let size = parseInt(this.state.map.value, 10);
-    zoom = zoom == -1 ? null : zoom;
-    size = size == -1 ? null : size;
+    size = size === -1 ? null : size;
     let markerCluster = new MarkerClusterer(this.state.map, this.state.markers,
       {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
         maxZoom: 19,
@@ -272,8 +268,8 @@ class App extends Component {
   }
   
     feature = (ev) => {
-      console.log("this is ev target latlng:", ev.target.getAttribute('latLng'));
-      let latLngAttribute= ev.target.getAttribute('latLng')
+      console.log("this is ev target latlng:", ev.target.getAttribute('latlng'));
+      let latLngAttribute= ev.target.getAttribute('latlng')
       let latLngArray= latLngAttribute.split(",")
       console.log("this is latlngarray:", latLngArray[0]);
       let latLng = new google.maps.LatLng(latLngArray[0],latLngArray[1]);
@@ -385,7 +381,7 @@ console.log("form data is:", formData)
         <div className= "List-child List-entries">
         {
           this.state.data.map((entry) => (
-        <div className= {(this.state.activeID === entry.properties.id)? "List-entry  List-entry-active": "List-entry"} onClick={this.feature} id={entry.properties.id} latLng={entry.geometry.coordinates}>
+        <div className= {(this.state.activeID === entry.properties.id)? "List-entry  List-entry-active": "List-entry"} onClick={this.feature} id={entry.properties.id} latlng={entry.geometry.coordinates}>
                <h4>{entry.properties.title}</h4>
                Artist: {entry.properties.artist} <br/>
         Location: {entry.properties.location}<br/>
